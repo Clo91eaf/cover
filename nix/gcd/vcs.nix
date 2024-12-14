@@ -29,6 +29,7 @@ stdenv.mkDerivation (finalAttr: {
 
   meta.mainProgram = binName;
 
+  # build time
   buildPhase = ''
     runHook preBuild
 
@@ -48,8 +49,9 @@ stdenv.mkDerivation (finalAttr: {
       } \
       ${
         lib.optionalString enableCover ''
-          -cm line+cond+fsm+tgl+branch+assert \
-          -cm_dir ${coverageName} ''
+          -cm assert \
+          -cm_dir ${coverageName} \
+          -assert enable_hier ''
       } \
       -file filelist.f \
       ${dpi-lib}/lib/${dpi-lib.libOutName} \

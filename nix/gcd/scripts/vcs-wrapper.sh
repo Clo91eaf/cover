@@ -2,6 +2,8 @@
 
 _EXTRA_ARGS="$@"
 
+echo "VCS wrapper started $_EXTRA_ARGS"
+
 if ((${VERBOSE:-0})); then
   set -x
 fi
@@ -22,6 +24,7 @@ ln -sfn "all/$_NOW" "$_GCD_SIM_RESULT_DIR/result"
 cp "$_VCS_SIM_BIN" "$_CURRENT/"
 cp -r "$_VCS_SIM_DAIDIR" "$_CURRENT/"
 
+# running time
 if [ -n "$_VCS_COV_DIR" ]; then
   cp -vr "$_LIB/$_VCS_COV_DIR" "$_CURRENT/"
   _CM_ARG="-cm assert -cm_dir ./$_VCS_COV_DIR" # vcs runs in $_CURRENT

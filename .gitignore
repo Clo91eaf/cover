@@ -1,6 +1,7 @@
 .bloop
 .bsp
 .jvm-opts
+.scala-build
 .mill-jvm-opts
 .metals/
 .vscode/

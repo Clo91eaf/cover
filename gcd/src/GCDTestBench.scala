@@ -121,7 +121,19 @@ class GCDTestBench(val parameter: GCDTestBenchParameter)
   // )
   CoverProperty(
     inputNotValid,
-    label = Some("GCD_COVER_BACK_PRESSURE")
+    label = Some("GCD_COVER_INPUT_NOT_VALID")
+  )
+  CoverProperty(
+    inputFire,
+    label = Some("GCD_COVER_INPUT_FIRE")
+  )
+  CoverProperty(
+    outputFire,
+    label = Some("GCD_COVER_OUTPUT_FIRE")
+  )
+  CoverProperty(
+    inputFire |=> inputNotFire.repeatAtLeast(1) ### outputFire,
+    label = Some("GCD_COVER_RESPONSE")
   )
 }
 object TestVerbatimParameter {
